@@ -1,6 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const connectDB = require("./db/connectDB");
+const productsRouter = require("./routes/productsRoutes");
 
 const app = express();
 
@@ -11,6 +12,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.send("Hello from the serverr");
 });
+
+app.use("/api/v1/products", productsRouter);
 
 // port
 const port = process.env.PORT || 5000;
